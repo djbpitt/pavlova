@@ -9,10 +9,10 @@
         select="distinct-values(tokenize(string-join((//speech/@speaker, //speech/@addressee),' '),'\s+'))"/>
     <xsl:variable name="totalPersons" select="count($interlocutors)"/>
     <xsl:variable name="degrees" select="360 div $totalPersons"/>
-    <xsl:variable name="greatCircleDiameter" select="300"/>
+    <xsl:variable name="greatCircleDiameter" select="600"/>
     <xsl:variable name="radius" select="12"/>
     <xsl:template match="/">
-        <svg width="100%" height="100%">
+        <svg width="100%" height="100%" style="overflow-x: auto; overflow-y: auto" viewBox="0 0 1100 700">
             <g transform="translate({$greatCircleDiameter + 30,$greatCircleDiameter + 30})">
                 <line x1="-{$greatCircleDiameter}" y1="0" x2="{$greatCircleDiameter}" y2="0"
                     stroke="black" stroke-width="2"/>
