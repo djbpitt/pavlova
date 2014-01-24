@@ -11,7 +11,7 @@
    <xsl:variable name="speeches" select="//speech"/>
     <xsl:variable name="totalSpeeches" select="count(//speech)"/>
 <xsl:variable name="degrees" select="360 div $totalPersons"/>
-    <xsl:variable name="greatCircleRadius" select="1200"/>
+    <xsl:variable name="greatCircleRadius" select="600"/>
  <!--   <xsl:variable name="radius" select="12"/>-->
     
     <xsl:template match="/">
@@ -24,7 +24,7 @@
                 
               <!--  <xsl:apply-templates select="//person[@identifier = $interlocutors]"/>-->
                 <xsl:sequence select="djb:arcPosition(1,0)"/>
-              <!--  <xsl:sequence select="djb:Names(1,0)"/>-->
+         
                 
             </g>
         </svg>
@@ -51,7 +51,7 @@
             
             <path d="M{$xpos1},{$ypos1}, A{$greatCircleRadius, $greatCircleRadius}, 0 0,1 {$xpos2},{$ypos2}" style="stroke:#660000; fill:none"/>
                
-            <text x="{$xpos1 + 2}" y="{$ypos1 + 2}">
+            <text x="{$xpos1 + 5}" y="{$ypos1 + 5}">
                 <xsl:value-of select="$currentPerson"/>
             </text>  
             <line x1="0" y1="0" x2="{$xpos1}" y2="{$ypos1}" style="stroke:#006600;"/>

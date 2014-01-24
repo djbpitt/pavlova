@@ -39,18 +39,44 @@
             <xsl:variable name="currentPerson" select="$persons[$personOffset]"/>
             <xsl:variable name="endAngle"
                 select="$startAngle + $degrees * (count($speeches/@speaker[. eq $currentPerson]) + count($speeches/@addressee[. eq $currentPerson])) "/>
-            <xsl:value-of
-                select="$startAngle"/>
-            <xsl:text>, </xsl:text>
-            <xsl:value-of select="$endAngle"/>
+            
+            
+  
+                <xsl:variable name="stAngleRad" select="math:pi() * $startAngle div 180"/>
+                <xsl:variable name="endAngleRad" select="math:pi() * $endAngle div 180"/>
+                <xsl:variable name="xpos1" select="$greatCircleRadius * math:cos($stAngleRad)"/>
+                <xsl:variable name="ypos1" select="$greatCircleRadius * math:sin($stAngleRad)"/>
+                <xsl:variable name="xpos2" select="$greatCircleRadius * math:cos($endAngleRad)"/>
+                <xsl:variable name="ypos2" select="$greatCircleRadius * math:sin($endAngleRad)"/>
+            
+            
+            
+            
+            <path d="M{$xpos1},{$ypos1}, A{$greatCircleRadius, $greatCircleRadius}, 0 0,1 {$xpos2},{$ypos2}" style="stroke:#660000; fill:none"/>
+            
+            <text x="{$xpos1 + 5}" y="{$ypos1 + 5}">
+                <xsl:value-of select="$currentPerson"/>
+            </text>  
+            <line x1="0" y1="0" x2="{$xpos1}" y2="{$ypos1}" style="stroke:#006600;"/>
       <xsl:sequence select="djb:arcPosition($personOffset + 1,$endAngle)"/>
         </xsl:if>
     </xsl:function>
+    
     <xsl:template match="/">
-        <svg width="100%" height="100%">
-            <g>
-                <xsl:value-of select="djb:arcPosition(1,0)"/>
+        <svg width="1000%" height="1000%">
+            <g transform="translate({$greatCircleRadius + 30,$greatCircleRadius + 30})">
+                <line x1="-{$greatCircleRadius}" y1="0" x2="{$greatCircleRadius}" y2="0"
+                    stroke="black" stroke-width="2"/>
+                <line x1="0" y1="-{$greatCircleRadius}" x2="0" y2="{$greatCircleRadius}"
+                    stroke="black" stroke-width="2"/>
+                
+                <!--  <xsl:apply-templates select="//person[@identifier = $interlocutors]"/>-->
+                <xsl:sequence select="djb:arcPosition(1,0)"/>
+                <!--  <xsl:sequence select="djb:Names(1,0)"/>-->
+                
             </g>
         </svg>
-    </xsl:template>
+    </xsl:template>  
+    
+
 </xsl:stylesheet>
