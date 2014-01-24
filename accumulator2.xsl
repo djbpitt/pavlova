@@ -38,16 +38,18 @@
         <xsl:if test="$personOffset le count($persons)">
             <xsl:variable name="currentPerson" select="$persons[$personOffset]"/>
             <xsl:variable name="endAngle"
-                select="$startAngle + $degrees * (count($speeches/@speaker[. eq $currentPerson]) + count($speeches/@addressee[. eq $currentPerson])) "/>"/>
-            <xsl:sequence
-                select="concat($currentPerson,' starts at ',$startAngle,' and ends at ',$endAngle)"/>
-        <xsl:sequence select="djb:arcPosition($personOffset + 1,$endAngle)"/>
+                select="$startAngle + $degrees * (count($speeches/@speaker[. eq $currentPerson]) + count($speeches/@addressee[. eq $currentPerson])) "/>
+            <xsl:value-of
+                select="$startAngle"/>
+            <xsl:text>, </xsl:text>
+            <xsl:value-of select="$endAngle"/>
+      <xsl:sequence select="djb:arcPosition($personOffset + 1,$endAngle)"/>
         </xsl:if>
     </xsl:function>
     <xsl:template match="/">
         <svg width="100%" height="100%">
             <g>
-                <xsl:sequence select="djb:arcPosition(1,0)"/>
+                <xsl:value-of select="djb:arcPosition(1,0)"/>
             </g>
         </svg>
     </xsl:template>

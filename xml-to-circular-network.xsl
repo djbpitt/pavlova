@@ -9,14 +9,14 @@
         select="distinct-values(tokenize(string-join((//speech/@speaker, //speech/@addressee),' '),'\s+'))"/>
     <xsl:variable name="totalPersons" select="count($interlocutors)"/>
     <xsl:variable name="degrees" select="360 div $totalPersons"/>
-    <xsl:variable name="greatCircleDiameter" select="600"/>
+    <xsl:variable name="greatCircleRadius" select="600"/>
     <xsl:variable name="radius" select="12"/>
     <xsl:template match="/">
         <svg width="100%" height="100%" style="overflow-x: auto; overflow-y: auto" viewBox="0 0 1100 700">
-            <g transform="translate({$greatCircleDiameter + 30,$greatCircleDiameter + 30})">
-                <line x1="-{$greatCircleDiameter}" y1="0" x2="{$greatCircleDiameter}" y2="0"
+            <g transform="translate({$greatCircleRadius + 30,$greatCircleRadius + 30})">
+                <line x1="-{$greatCircleRadius}" y1="0" x2="{$greatCircleRadius}" y2="0"
                     stroke="black" stroke-width="2"/>
-                <line x1="0" y1="-{$greatCircleDiameter}" x2="0" y2="{$greatCircleDiameter}"
+                <line x1="0" y1="-{$greatCircleRadius}" x2="0" y2="{$greatCircleRadius}"
                     stroke="black" stroke-width="2"/>
                 <xsl:apply-templates select="//person[@identifier = $interlocutors]"/>
             </g>
@@ -29,8 +29,8 @@
 -->
         <xsl:variable name="localDegrees" select="$degrees * position()"/>
         <xsl:variable name="radians" select="math:pi() * $localDegrees div 180"/>
-        <xsl:variable name="xpos" select="$greatCircleDiameter * math:cos($radians)"/>
-        <xsl:variable name="ypos" select="$greatCircleDiameter * math:sin($radians)"/>
+        <xsl:variable name="xpos" select="$greatCircleRadius * math:cos($radians)"/>
+        <xsl:variable name="ypos" select="$greatCircleRadius * math:sin($radians)"/>
         <circle r="{$radius}" cx="{$xpos}" cy="{$ypos}" stroke="red" fill-opacity="0"/>
         <text x="{$xpos + $radius + 2}" y="{$ypos + 2}">
             <xsl:value-of select="@identifier"/>
@@ -46,9 +46,9 @@
                     <xsl:variable name="radiansAddressee"
                         select="math:pi() * $degreesAddressee div 180"/>
                     <xsl:variable name=" xposAddressee"
-                        select="$greatCircleDiameter * math:cos($radiansAddressee)"/>
+                        select="$greatCircleRadius * math:cos($radiansAddressee)"/>
                     <xsl:variable name="yposAddressee"
-                        select="$greatCircleDiameter * math:sin($radiansAddressee)"/>
+                        select="$greatCircleRadius * math:sin($radiansAddressee)"/>
                     <line stroke="black" stroke-width="2" x1="{$xpos}" y1="{$ypos}"
                         x2="{$xposAddressee}" y2="{$yposAddressee}"/>
                 </xsl:for-each>
