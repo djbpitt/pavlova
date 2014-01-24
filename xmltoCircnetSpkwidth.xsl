@@ -37,7 +37,7 @@
             $startPosition is lcation to start next arc (and end of preceding one)
         -->
         <xsl:param name="personOffset"/>
-        <xsl:param name="startAngle"/>
+        <xsl:param name="startAngle"/> 
         <xsl:if test="$personOffset le count($interlocutors)">
             <xsl:variable name="currentPerson" select="$interlocutors[$personOffset]"/>
             <xsl:variable name="endAngle"
