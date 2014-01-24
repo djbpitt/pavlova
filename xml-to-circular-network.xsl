@@ -6,7 +6,7 @@
     <xsl:output method="xml" indent="yes"/>
     <xsl:variable name="root" select="/"/>
     <xsl:variable name="interlocutors"
-        select="distinct-values(tokenize(string-join((//speech/@speaker, //speech/@addressee),' '),'\s+'))"/>
+        select="distinct-values(tokenize(string-join((//speech/@speaker, //speech/@addressee),' '),'\s+'))"/> 
     <xsl:variable name="totalPersons" select="count($interlocutors)"/>
     <xsl:variable name="degrees" select="360 div $totalPersons"/>
     <xsl:variable name="greatCircleRadius" select="600"/>
