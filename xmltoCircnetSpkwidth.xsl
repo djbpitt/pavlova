@@ -9,9 +9,9 @@
         select="distinct-values(tokenize(string-join((//speech/@speaker, //speech/@addressee),' '),'\s+'))"/>
     <xsl:variable name="totalPersons" select="count($interlocutors)"/>
    <xsl:variable name="speeches" select="//speech"/>
-    <xsl:variable name="totalSpeeches" select="count(//speech)"/>
-<xsl:variable name="degrees" select="360 div $totalPersons"/>
-    <xsl:variable name="greatCircleRadius" select="600"/>
+    <xsl:variable name="totalSpeeches" select="count(//speech) + count(//speech[@addressee])"/>
+<xsl:variable name="degrees" select="360 div $totalSpeeches"/>
+    <xsl:variable name="greatCircleRadius" select="1200"/>
  <!--   <xsl:variable name="radius" select="12"/>-->
     
     <xsl:template match="/">
@@ -53,6 +53,11 @@
                
             <text x="{$xpos1 + 5}" y="{$ypos1 + 5}">
                 <xsl:value-of select="$currentPerson"/>
+                <xsl:text>: </xsl:text>
+                <xsl:value-of select="$endAngleRad"/>
+                <xsl:text>radians, or </xsl:text>
+                <xsl:value-of select="$endAngle"/>
+                <xsl:text>degrees.</xsl:text>
             </text>  
             <line x1="0" y1="0" x2="{$xpos1}" y2="{$ypos1}" style="stroke:#006600;"/>
       
