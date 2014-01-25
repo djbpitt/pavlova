@@ -23,9 +23,9 @@
         select="distinct-values(tokenize(string-join((//speech/@speaker, //speech/@addressee),' '),'\s+'))"/>
     <xsl:variable name="totalPersons" select="count($interlocutors)"/>
 <!--    <xsl:variable name="speeches" select="//speech"/>-->
-    <xsl:variable name="totalSpeeches" select="count(//speech/@speaker)"/>
+    <xsl:variable name="totalSpeeches" select="count(//speech)"/>
     
-    <xsl:variable name="degrees" select="360 div ($totalPersons)"/>
+    <xsl:variable name="degrees" select="360 * 16 div $totalSpeeches"/>
     <xsl:variable name="greatCircleRadius" select="600"/>
     
     <xsl:function name="djb:arcPosition">
