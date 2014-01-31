@@ -54,10 +54,9 @@
             <text x="{$xpos1 + 5}" y="{$ypos1 + 5}">
                 <xsl:value-of select="$currentPerson"/>
                 <xsl:text>: </xsl:text>
-                <xsl:value-of select="$endAngleRad"/>
-                <xsl:text>radians, or </xsl:text>
-                <xsl:value-of select="$endAngle"/>
-                <xsl:text>degrees.</xsl:text>
+                <xsl:value-of select="(count($speeches/@speaker[. eq $currentPerson]) + count($speeches/@addressee[. eq $currentPerson])) "/>
+                <xsl:text> number of interactions</xsl:text>
+             
             </text>  
             <line x1="0" y1="0" x2="{$xpos1}" y2="{$ypos1}" style="stroke:#006600;"/>
       
