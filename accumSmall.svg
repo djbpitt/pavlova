@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:djb="http://www.obdurodon.org"
+     width="1000%"
+     height="1000%">
+   <g transform="translate(630 630)">
+      <line x1="-600"
+            y1="0"
+            x2="600"
+            y2="0"
+            stroke="black"
+            stroke-width="2"/>
+      <line x1="0"
+            y1="-600"
+            x2="0"
+            y2="600"
+            stroke="black"
+            stroke-width="2"/>
+      <path d="M600,0, A600 600, 0 0,1 -386.189869501853,459.19209999099695"
+            style="stroke:#660000; fill:none"/>
+      <text x="605" y="5">greg</text>
+      <line x1="0" y1="0" x2="600" y2="0" style="stroke:#006600;"/>
+      <path d="M-386.189869501853,459.19209999099695, A600 600, 0 0,1 -102.85794898047249,-591.1177905726831"
+            style="stroke:#660000; fill:none"/>
+      <text x="-381.189869501853" y="464.19209999099695">elisa</text>
+      <line x1="0"
+            y1="0"
+            x2="-386.189869501853"
+            y2="459.19209999099695"
+            style="stroke:#006600;"/>
+      <path d="M-102.85794898047249,-591.1177905726831, A600 600, 0 0,1 595.5687647517357,-72.78630676227336"
+            style="stroke:#660000; fill:none"/>
+      <text x="-97.85794898047249" y="-586.1177905726831">david</text>
+      <line x1="0"
+            y1="0"
+            x2="-102.85794898047249"
+            y2="-591.1177905726831"
+            style="stroke:#006600;"/>
+      <path d="M595.5687647517357,-72.78630676227336, A600 600, 0 0,1 587.7179647514968,120.77911205319589"
+            style="stroke:#660000; fill:none"/>
+      <text x="600.5687647517357" y="-67.78630676227336">meg</text>
+      <line x1="0"
+            y1="0"
+            x2="595.5687647517357"
+            y2="-72.78630676227336"
+            style="stroke:#006600;"/>
+   </g>
+</svg>
